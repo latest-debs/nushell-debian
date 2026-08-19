@@ -1,0 +1,9 @@
+# Package definition for nushell
+
+package_name: nushell
+github_repo: nushell/nushell
+artifact_format: tar.gz
+description: "A new type of shell"
+license: MIT
+
+# Build for all Debian suites and all supported architectures.

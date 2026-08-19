@@ -1,0 +1,55 @@
+{
+  "package": "nushell",
+  "upstream_repo": "nushell/nushell",
+  "version": "0.115.0",
+  "tag": "0.115.0",
+  "published_at": "2026-08-15T21:18:17Z",
+  "license": "MIT",
+  "asset": "nu-0.115.0-aarch64-unknown-linux-gnu.tar.gz",
+  "asset_size": 79870342,
+  "sha256": "508f00f858474e754335bea741c8f729b8ae526451aa01b9c1e36944311b846a",
+  "expected_sha256": "508f00f858474e754335bea741c8f729b8ae526451aa01b9c1e36944311b846a",
+  "checksum_source": "SHA256SUMS",
+  "checksum_verified": true,
+  "assets": {
+    "nu-0.115.0-armv7-unknown-linux-musleabihf.tar.gz": {
+      "sha256": "bbce5d344bd6bdff77ca0301cb6b0f31c5edeb5e685b5b738b32d4d5c837726e",
+      "size": 77922515
+    },
+    "nu-0.115.0-armv7-unknown-linux-gnueabihf.tar.gz": {
+      "sha256": "db498add9f3cec41d79ba474ee4b8f247242381fcbac9bf258d673da54b890a9",
+      "size": 77343561
+    },
+    "nu-0.115.0-x86_64-unknown-linux-musl.tar.gz": {
+      "sha256": "d510565b039b5384986652e579fe443877fcc4df86f16072ed5edca641ad92f1",
+      "size": 83521764
+    },
+    "nu-0.115.0-x86_64-unknown-linux-gnu.tar.gz": {
+      "sha256": "da83cfe482060d2c34b6b9af829975a313bce6b92e0398c3b2a59cb38630c7b2",
+      "size": 77151418
+    },
+    "nu-0.115.0-aarch64-unknown-linux-gnu.tar.gz": {
+      "sha256": "508f00f858474e754335bea741c8f729b8ae526451aa01b9c1e36944311b846a",
+      "size": 79870342
+    },
+    "nu-0.115.0-loongarch64-unknown-linux-musl.tar.gz": {
+      "sha256": "a8b90641809d96cd97d2d9fe1a744a9fa23502296aa79f516f25e653905d9da9",
+      "size": 65737876
+    },
+    "nu-0.115.0-loongarch64-unknown-linux-gnu.tar.gz": {
+      "sha256": "844703d5163b471f03c356bd08a0556e580ece7d5a4413f4d8ca13bddeea89b5",
+      "size": 69424817
+    },
+    "nu-0.115.0-aarch64-unknown-linux-musl.tar.gz": {
+      "sha256": "7e60824f66b8c814fdbb52741047d38c8379e4bc5e8271135667ef04e3c55324",
+      "size": 79210787
+    },
+    "nu-0.115.0-riscv64gc-unknown-linux-gnu.tar.gz": {
+      "sha256": "79e876852d2d662d82001fd4975a496f0900f1979a08f179e3b8fb57a37e196c",
+      "size": 82257425
+    }
+  },
+  "asset_count": 9,
+  "vetted_at": "2026-08-19T12:31:56Z",
+  "vetted_by": ""
+}

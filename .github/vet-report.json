@@ -1,0 +1,48 @@
+{
+  "gate": "pass",
+  "license": {
+    "declared": "MIT",
+    "detected": [
+      "MIT"
+    ],
+    "license_files": [
+      "//tmp/tmp.E8ZG0Wqo2U/x/nu-0.115.0-aarch64-unknown-linux-gnu/LICENSE"
+    ],
+    "matches": true,
+    "status": "pass",
+    "detail": "declared MIT matches detected MIT"
+  },
+  "asset": {
+    "format": "tar.gz",
+    "size": 79870342,
+    "valid": true,
+    "is_html": false,
+    "binary": "nu_plugin_gstat",
+    "elf_arch": "ARM aarch64",
+    "status": "pass",
+    "detail": "valid tar.gz archive containing 9 ELF executable(s); first: nu_plugin_gstat (ARM aarch64); release covers: amd64 arm64 armhf riscv64 loong64 "
+  },
+  "architectures": {
+    "covered": [
+      "amd64",
+      "arm64",
+      "armhf",
+      "riscv64",
+      "loong64"
+    ],
+    "missing": [
+      "armel",
+      "i386",
+      "ppc64el",
+      "s390x"
+    ],
+    "assets": {
+      "amd64": "nu-0.115.0-x86_64-unknown-linux-gnu.tar.gz",
+      "arm64": "nu-0.115.0-aarch64-unknown-linux-gnu.tar.gz",
+      "armhf": "nu-0.115.0-armv7-unknown-linux-gnueabihf.tar.gz",
+      "riscv64": "nu-0.115.0-riscv64gc-unknown-linux-gnu.tar.gz",
+      "loong64": "nu-0.115.0-loongarch64-unknown-linux-gnu.tar.gz"
+    }
+  },
+  "vetted_at": "2026-08-19T12:31:59Z"
+}
