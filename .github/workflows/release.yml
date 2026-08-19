@@ -91,7 +91,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build nushell
-        uses: ranjithrajv/debian-multiarch-builder@v.0.1a15
+        uses: ranjithrajv/debian-multiarch-builder@v.0.1a17
         env:
           # Authenticate GitHub API calls from the builder; anonymous calls
           # from shared runner IPs are rate-limited (60/h) and caused
@@ -172,12 +172,6 @@ jobs:
           dpkg-deb -x "$DEB" smoke-root
           for bin in smoke-root/usr/bin/*; do
             name="$(basename "$bin")"
-            # nu_plugin_* binaries speak only the Nushell plugin protocol
-            # over stdio - they don't implement --version/-V/version like a
-            # normal CLI, so only the main `nu` binary is smoke-tested here.
-            case "$name" in
-              nu_plugin_*) continue;;
-            esac
             ok=0
             for arg in --version -V version; do
               out="$(docker run --rm -v "$PWD/smoke-root/usr/bin:/bins:ro" debian:$SUITE bash -c "chmod +x /bins/$name; /bins/$name $arg 2>&1 || true")"
