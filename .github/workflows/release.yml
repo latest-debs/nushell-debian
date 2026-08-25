@@ -179,6 +179,13 @@ jobs:
             dpkg-deb -x "$DEB" smoke-root
             mapfile -t bin_names < <(basename -a smoke-root/usr/bin/*)
             if [ -z "${bin_names[0]:-}" ]; then continue; fi
+            # Filter nu_plugin_* binaries from smoke set - they speak only the
+            # Nushell plugin protocol over stdio and don't implement --version.
+            # Keep at least one entry so basename expansion stays valid.
+            mapfile -t _filtered < <(printf '%s\n' "${bin_names[@]}" | grep -v '^nu_plugin_' || true)
+            if [ -n "${_filtered[0]:-}" ]; then
+              bin_names=("${_filtered[@]}")
+            fi
           # Actually install the .deb (not just extract + mount usr/bin) so
           # this exercises what a real `apt install` does: bundle-mode
           # packages symlink /usr/bin/<name> to an ABSOLUTE path under
@@ -196,6 +203,7 @@ jobs:
           apt-get install -y -qq "$1" >/dev/null
           shift; expected="$1"; shift
           for name in "$@"; do
+            case "$name" in nu_plugin_*) echo "  SKIP: $name (plugin protocol, no --version)"; continue;; esac
             ok=0
             for arg in --version -V version; do
               out="$("$name" "$arg" 2>&1 || true)"
