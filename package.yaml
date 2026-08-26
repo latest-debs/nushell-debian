@@ -11,3 +11,6 @@ license: MIT
 # Binaries that must not be smoke-tested with --version (not standalone CLIs).
 smoke_skip:
   - "nu_plugin_*"
+
+# Smoke policy (read by the workflow at runtime)
+min_glibc: "2.36"
