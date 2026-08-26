@@ -105,7 +105,7 @@ jobs:
           restore-keys: apt-${{ runner.os }}-
 
       - name: Build nushell
-        uses: ranjithrajv/debian-multiarch-builder@v.0.1a23
+        uses: ranjithrajv/debian-multiarch-builder@c751124a78fbacb490e45a1ec15a05adb5acd9b9 # v.0.1a24
         env:
           # Authenticate GitHub API calls from the builder; anonymous calls
           # from shared runner IPs are rate-limited (60/h) and caused
@@ -179,13 +179,6 @@ jobs:
             dpkg-deb -x "$DEB" smoke-root
             mapfile -t bin_names < <(basename -a smoke-root/usr/bin/*)
             if [ -z "${bin_names[0]:-}" ]; then continue; fi
-            # Filter nu_plugin_* binaries from smoke set - they speak only the
-            # Nushell plugin protocol over stdio and don't implement --version.
-            # Keep at least one entry so basename expansion stays valid.
-            mapfile -t _filtered < <(printf '%s\n' "${bin_names[@]}" | grep -v '^nu_plugin_' || true)
-            if [ -n "${_filtered[0]:-}" ]; then
-              bin_names=("${_filtered[@]}")
-            fi
           # Actually install the .deb (not just extract + mount usr/bin) so
           # this exercises what a real `apt install` does: bundle-mode
           # packages symlink /usr/bin/<name> to an ABSOLUTE path under
@@ -203,7 +196,6 @@ jobs:
           apt-get install -y -qq "$1" >/dev/null
           shift; expected="$1"; shift
           for name in "$@"; do
-            case "$name" in nu_plugin_*) echo "  SKIP: $name (plugin protocol, no --version)"; continue;; esac
             ok=0
             for arg in --version -V version; do
               out="$("$name" "$arg" 2>&1 || true)"
@@ -213,7 +205,7 @@ jobs:
                 break
               fi
             done
-            [ "$ok" = 1 ] || { echo "SMOKE_FAIL:$name"; printf '%s\n' "$out" | head -5; exit 1; }
+            [ "$ok" = 1 ] || { echo "SMOKE_FAIL:$name"; exit 1; }
           done
           echo "ALL_OK"'
             out="$(docker run --rm -e ZED_ALLOW_ROOT=true -v "$PWD/$DEB:/pkg.deb:ro" debian:$SUITE \
