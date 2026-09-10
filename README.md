@@ -2,6 +2,9 @@
 
 # nushell for Debian
 
+[![Release](https://img.shields.io/github/v/release/latest-debs/nushell-debian)](https://github.com/latest-debs/nushell-debian/releases)
+[![Build](https://github.com/latest-debs/nushell-debian/actions/workflows/release.yml/badge.svg)](../../actions)
+
 [nushell/nushell](https://github.com/nushell/nushell) — A new type of shell —
 packaged for Debian as part of [latest-debs](https://github.com/latest-debs).
 
@@ -13,6 +16,7 @@ Want your own project packaged and maintained this way? See the
 Via the latest-debs apt repository:
 
 ```sh
+sudo apt install extrepo  # if not already installed
 sudo extrepo enable latest-debs
 sudo apt update
 sudo apt install nushell
@@ -21,7 +25,14 @@ sudo apt install nushell
 Or download a `.deb` from the [Releases](https://github.com/latest-debs/nushell-debian/releases) page:
 
 ```sh
-sudo dpkg -i nushell_*.deb
+sudo apt install ./nushell_*.deb
+```
+
+## Verify
+
+```sh
+apt-cache policy nushell
+nushell --version
 ```
 
 ## Supported distributions & architectures
@@ -29,6 +40,19 @@ sudo dpkg -i nushell_*.deb
 - Debian Bookworm (12), Trixie (13), Forky (14/testing), Sid (unstable)
 - amd64, arm64, armhf, i386, ppc64el, riscv64, s390x — whichever
   architectures nushell/nushell actually publishes a Linux binary for
+
+## Building
+
+Run the [Build nushell for Debian](../../actions) workflow on GitHub with the
+desired upstream version. Packaging is driven by
+[debian-multiarch-builder](https://github.com/ranjithrajv/debian-multiarch-builder).
+
+## Collaborate with us
+
+latest-debs is a community effort. If you rely on this package and want to
+help keep it fresh, watching for a new upstream release or fixing a build
+hiccup, we'd love your help. Open an issue on this repo, or email
+**latest-debs@users.noreply.github.com** to get involved.
 
 ## Disclaimer
 
@@ -43,3 +67,9 @@ Unofficial, volunteer-run packaging — **best-effort, no SLA**.
 
 For issues with nushell itself, see
 [nushell/nushell](https://github.com/nushell/nushell).
+
+## License
+
+Packaging scripts in this repo are MIT-licensed. The packaged binaries
+remain under their upstream license (`MIT` — see
+[nushell/nushell](https://github.com/nushell/nushell)).
